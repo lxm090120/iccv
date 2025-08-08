@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!-- saved from url=(0160)file:///C:/Users/Lenovo/Desktop/20846_Learning_In_Context_Worl_Supplementary%20Material%20(1)/20846_Learning_In_Context_Worl_Supplementary%20Material/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/svg+xml" href="file:///C:/Users/Lenovo/Desktop/20846_Learning_In_Context_Worl_Supplementary%20Material%20(1)/20846_Learning_In_Context_Worl_Supplementary%20Material/favicon.svg">
+    <meta name="generator" content="Astro v5.4.2">
+    <title>In Context Learning Video Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./In Context Learning Video Generation_files/css2" rel="stylesheet">
+    <link rel="stylesheet" href="/iccv/index.B9oQn3HP.css">
+</head>
+
+<body>
+    <main>
+        <section class="hero" data-astro-cid-j7pv25f6="">
+            <div class="hero-background" data-astro-cid-j7pv25f6=""> <video src="static_resources/TitleVideo.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                <div class="overlay" data-astro-cid-j7pv25f6=""></div>
+            </div>
+            <div class="hero-content" data-astro-cid-j7pv25f6="">
+                <h1 data-astro-cid-j7pv25f6=""> <span class="main-title" data-astro-cid-j7pv25f6="">PhysICL</span> <span class="subtitle" data-astro-cid-j7pv25f6="">Learning In-Context World Physics for Video
+                        Generation</span> </h1>
+                <div class="anonymous-authors" data-astro-cid-j7pv25f6="">Anonymous Submission</div>
+            </div>
+        </section>
+        <section class="abstract-section" data-astro-cid-lpv2dwx6="">
+            <h2 data-astro-cid-lpv2dwx6="">Abstract</h2>
+            <div class="abstract-content" data-astro-cid-lpv2dwx6="">
+                <p data-astro-cid-lpv2dwx6="">
+                    Recent advances in video generation models have achieved impressive feats in creating personalized,
+                    diverse videos. However, these models face a significant barrier: they fail to simulate physically
+                    plausible phenomena, as they primarily learn data distributions without accounting for underlying
+                    physical laws. Physics engines, on the other hand, excel at precise simulations but are limited to
+                    closed-domain scenarios, relying heavily on predefined assets. To address this issue, we introduce
+                    PhysICL, a framework that integrates physical simulation priors through in-context learning, which
+                    is the first of its kind to seamlessly combine the power of physics engines with generative models.
+                    At the core of PhysICL, a physics engine-guided LLM agent autonomously retrieves reference
+                    simulations from an asset library and adapts them to user-defined scenes by manipulating the latent
+                    space in a context-aware manner through an in-context learning pipeline. This novel decoupling of
+                    physical reasoning from visual synthesis allows PhysICL to achieve truly open-domain physical
+                    simulation, generating videos with realistic, physically plausible phenomena. Our results surpass
+                    existing video generation models lacking physics context, demonstrating significant improvements in
+                    quantitative metrics and human preference evaluations. We show that physical parameters can
+                    precisely control our model, unlocking unprecedented flexibility and creative control. Furthermore,
+                    we conduct experiments on robotics datasets, highlighting the real-world potential of PhysICL.
+                    The source code will be released.
+                </p>
+            </div>
+        </section>
+        <section class="method" data-astro-cid-gkk5ym2j="">
+            <div class="method-content" style="text-align: center;" data-astro-cid-gkk5ym2j="">
+                <h2 data-astro-cid-gkk5ym2j="">Method Overview</h2>
+                <div class="pipeline-image" data-astro-cid-gkk5ym2j=""> 
+                    <img src="./In Context Learning Video Generation_files/pipeline.png" alt="Method pipeline overview" data-astro-cid-gkk5ym2j=""> 
+                </div>
+                <div class="description" data-astro-cid-gkk5ym2j="">
+                    <p><strong>Overview of our proposed pipeline.</strong></p>
+                    <p>The first stage generates a video using a physics engine to simulate desired physical phenomena, as outlined in Section 3.1.
+                    The second stage applies motion transfer using our in-context learning framework, detailed in Section 3.2.
+                    The training logic behind our approach is discussed in Section 3.3</p>
+                </div>
+            </div>
+        </section>
+        <section class="physical-phenomenon" data-astro-cid-j7pv25f6="">
+            <h2 data-astro-cid-j7pv25f6="">Physics Engine Simulation In-Context Learning</h2>
+            <p class="section-description" data-astro-cid-j7pv25f6="">
+                Our model can accurately capture and reproduce various physical phenomena, maintaining physical
+                plausibility across different scenarios.
+            </p>
+            <div class="phenomenon-container" data-astro-cid-j7pv25f6="">
+                <div class="phenomenon-grid" data-astro-cid-j7pv25f6="">
+                    <div class="phenomenon-pair" id="physical_1" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_1a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_1b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">A single scoop of vanilla ice cream melting on a warm surface, showing realistic fluid dynamics with slow viscous flow and surface tension effects. The melting process should demonstrate heat transfer physics with accurate timing of phase change from solid to liquid state.</div>
+                    </div>
+                    <div class="phenomenon-pair" id="physical_2" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_2a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_2b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">High-speed collision of a liquid droplet with a solid surface, showing accurate fluid dynamics including splash formation, surface tension effects, and viscous dissipation. The simulation should capture the exact moment of impact with proper energy conservation.</div>
+                    </div>
+                    <div class="phenomenon-pair" id="physical_3" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_3a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_3b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Cloth simulation showing realistic flag dynamics in wind, with accurate modeling of fabric properties including stiffness, damping, and aerodynamic forces. The simulation should demonstrate proper wave propagation through the material with conservation of momentum.</div>
+                    </div>
+                    <div class="phenomenon-pair" id="physical_4" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_4a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_4b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Smoke plume rising from a chimney with accurate fluid dynamics including buoyancy effects, turbulence, and thermal convection. The simulation should show proper interaction between the smoke and ambient air with realistic dissipation patterns.</div>
+                    </div>
+                    <div class="phenomenon-pair" id="physical_5" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_5a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_5b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Rigid body physics simulation of stacked objects collapsing, showing accurate collision detection, friction modeling, and conservation of energy. The simulation should demonstrate proper mass distribution effects and realistic settling behavior.</div>
+                    </div>
+                    <div class="phenomenon-pair" id="physical_6" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_6a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> <video src="static_resources/demo/phy/phy_6b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Water surface simulation showing realistic wave propagation and reflection with accurate fluid dynamics including viscosity, surface tension, and boundary interactions. The simulation should demonstrate proper energy transfer through the medium.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="controllable-magnitude" data-astro-cid-j7pv25f6="">
+            <h2 data-astro-cid-j7pv25f6="">Controllable Magnitude</h2>
+            <p class="section-description" data-astro-cid-j7pv25f6="">
+                Our model can precisely control the physical parameters through a physics engine while maintaining the same motion
+                pattern, demonstrating fine-grained control over generated videos with adjustable intensity levels.
+            </p>
+            <div class="magnitude-container" data-astro-cid-j7pv25f6="">
+                <div class="magnitude-pairs" data-astro-cid-j7pv25f6="">
+                    <div class="magnitude-row" data-astro-cid-j7pv25f6="">
+                        <h4 class="pair-title" data-astro-cid-j7pv25f6="">Weak Intensity</h4>
+                        <div class="group-videos" data-astro-cid-j7pv25f6="">
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 1: Wind Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1d.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    Gentle breeze effect: Leaves and branches sway subtly with a wind speed of approximately 3-5 m/s (6-11 mph), 
+                                    simulating a light natural wind that causes minimal disturbance to vegetation while maintaining natural motion patterns.
+                                </div>
+                            </div>
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 2: Smoke Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2d.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    Low-density smoke dispersion: Thin smoke particles drift slowly with minimal turbulence, 
+                                    simulating conditions with air currents below 1 m/s (2.2 mph), creating a calm, wispy smoke effect 
+                                    typical of a nearly windless environment.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="magnitude-row" data-astro-cid-j7pv25f6="">
+                        <h4 class="pair-title" data-astro-cid-j7pv25f6="">Medium Intensity</h4>
+                        <div class="group-videos" data-astro-cid-j7pv25f6="">
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 1: Wind Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1e.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    Moderate wind conditions: Branches show significant movement with wind speeds of 8-12 m/s (18-27 mph), 
+                                    creating visible bending of vegetation while maintaining structural integrity. 
+                                    This represents typical windy day conditions where leaves flutter vigorously.
+                                </div>
+                            </div>
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 2: Smoke Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2e.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    Medium-density smoke flow: Smoke particles form distinct swirling patterns with air currents of 2-4 m/s (4.5-9 mph), 
+                                    demonstrating clear directional movement while maintaining cohesive smoke structures. 
+                                    This represents typical indoor ventilation conditions or light outdoor breezes affecting smoke dispersion.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="magnitude-row" data-astro-cid-j7pv25f6="">
+                        <h4 class="pair-title" data-astro-cid-j7pv25f6="">Strong Intensity</h4>
+                        <div class="group-videos" data-astro-cid-j7pv25f6="">
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 1: Wind Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1c.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_1f.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    Gale-force wind simulation: Vegetation exhibits extreme bending and rapid movement with wind speeds exceeding 15 m/s (34 mph), 
+                                    simulating storm conditions where branches whip violently and leaves are torn from their stems. 
+                                    The physics engine accurately models the stress limits of plant materials under such conditions.
+                                </div>
+                            </div>
+                            <div class="group-section" data-astro-cid-j7pv25f6="">
+                                <h3 data-astro-cid-j7pv25f6="">Group 2: Smoke Simulation</h3>
+                                <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2c.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                                    </div>
+                                    <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                        <video src="static_resources/demo/para/para_2f.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                        <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption" data-astro-cid-j7pv25f6="">
+                                    High-velocity smoke turbulence: Dense smoke is rapidly dispersed with air currents exceeding 6 m/s (13 mph), 
+                                    creating complex vortices and rapid dissipation patterns. This simulation accurately represents smoke behavior 
+                                    in strong ventilation systems or outdoor windy conditions, with detailed modeling of turbulent flow dynamics.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="simulation" data-astro-cid-j7pv25f6="">
+            <h2 data-astro-cid-j7pv25f6="">Real World Physics In-Context Learning</h2>
+            <p class="section-description" data-astro-cid-j7pv25f6="">
+                Our model demonstrates exceptional performance in simulating real-world physics, accurately capturing
+                and reproducing complex physical interactions and phenomena.
+            </p>
+            <div class="simulation-container" data-astro-cid-j7pv25f6="">
+                <div class="simulation-grid" data-astro-cid-j7pv25f6="">
+                    <div class="simulation-pair" id="simulation_1" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_1a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_1b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">First-person perspective driving simulation showing realistic vehicle dynamics, road surface interactions, and environmental responses including accurate physics of suspension movement, tire friction, and momentum conservation during turns.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_2" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_2a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_2b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Precise simulation of drawer mechanics demonstrating accurate friction modeling, smooth sliding motion with proper acceleration/deceleration curves, and realistic stopping behavior that accounts for mass distribution and contact forces.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_3" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_3a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_3b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Advanced wind simulation showing turbulent airflow patterns interacting with flexible materials, including realistic cloth physics with proper bending, stretching, and folding behaviors that respond dynamically to changing wind forces.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_4" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_4a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_4b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Complex cooking simulation featuring accurate heat transfer physics, fluid dynamics of boiling liquids, steam particle effects, and material state changes with proper timing for phase transitions between solid, liquid, and gaseous states.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_5" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_5a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_5b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">High-fidelity wind simulation through dense foliage demonstrating proper leaf flutter mechanics, branch flexibility, and hierarchical motion propagation that accurately reflects wind speed gradients and directional changes.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_6" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_6a.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="static_resources/demo/real/real_6b.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">Vehicle dynamics simulation featuring realistic suspension responses to uneven terrain, accurate tire deformation during cornering, proper weight transfer during acceleration/braking, and environmental interactions with road surface materials.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="simulation" data-astro-cid-j7pv25f6="">
+            <h2 data-astro-cid-j7pv25f6="">Physical phenomena in real life</h2>
+            <p class="section-description" data-astro-cid-j7pv25f6="">
+                Our model demonstrates exceptional performance in simulating real-world physics, accurately capturing
+                and reproducing complex physical interactions and phenomena.
+            </p>
+            <div class="simulation-container" data-astro-cid-j7pv25f6="">
+                <div class="simulation-grid" data-astro-cid-j7pv25f6="">
+                    <div class="simulation-pair" id="simulation_1" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/瓶子.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/rock.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">It simulated the complete physical process of an object falling from a height and breaking. An object accelerates and falls under the influence of gravity, and air resistance eventually enables it to reach a stable terminal speed. When an object strikes the ground violently, the huge impact force acts instantly on the surface of the object, forming a complex stress distribution within the material.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_2" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/basketball.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/铁球.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">The simulation of the collision process between a sphere falling from a height and different surfaces, as well as the free fall movement of the sphere under the effect of gravity, demonstrated the subtle influence of air resistance on the fall trajectories of various spheres. At the moment when the sphere strikes the ground, the system calculates the impact force generated by the collision in real time and simulates different deformation responses based on the material properties of the sphere</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_3" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/juice.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/milk.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">The complex hydrodynamic process of liquid pouring was simulated, precisely demonstrating the viscous effect between the surface tension of the liquid and the container wall, and realistically reproduces the meniscus deformation when the liquid initially breaks through the edge of the container. As the tilting Angle increases, the fluid dynamics model accurately simulates two typical flow states: the smooth descent of laminar flow in the initial stage and the subsequent turbulent mixing motion.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_4" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/water.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/beer.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">The complex hydrodynamic process of liquid pouring was simulated, precisely demonstrating the viscous effect between the surface tension of the liquid and the container wall, and realistically reproduces the meniscus deformation when the liquid initially breaks through the edge of the container. As the tilting Angle increases, the fluid dynamics model accurately simulates two typical flow states: the smooth descent of laminar flow in the initial stage and the subsequent turbulent mixing motion.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_5" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/lemon.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/watermelon.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">The complete interaction process of material mechanics and fluid dynamics when a knife cuts fruits was simulated. The failure mechanics phenomena from initial contact to complete separation were demonstrated through multi-physics coupling technology.</div>
+                    </div>
+                    <div class="simulation-pair" id="simulation_6" data-astro-cid-j7pv25f6="">
+                        <div class="video-grid no-context" data-astro-cid-j7pv25f6="">
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/egg.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Reference</div>
+                            </div>
+                            <div class="video-column" data-astro-cid-j7pv25f6=""> 
+                                <video src="/iccv/video/icecream.mp4" autoplay="" muted="" loop="" playsinline="" data-astro-cid-j7pv25f6=""></video>
+                                <div class="video-label" data-astro-cid-j7pv25f6="">Generated</div>
+                            </div>
+                        </div>
+                        <div class="video-caption" data-astro-cid-j7pv25f6="">The complex interface behavior of liquids on planar substrates was simulated, and the complete fluid phenomenon from macroscopic spreading to microscopic contact line dynamics was demonstrated through multi-scale physical modeling.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+</body></html>
